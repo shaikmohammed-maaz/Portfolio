@@ -1,6 +1,6 @@
 import React from "react";
 import "./Projects.css"; // Importing the CSS file for Projects styles
-import aboutImg from "../assets/aboutImg.jpg"; // Importing a sample image for projects
+import PortfolioImg from "../assets/PortfoiloImg.png"; // Importing Portfolio project image
 import AgroImg from "../assets/AgroValueImg.png"; // Importing Agro Value project image
 import SaasImg from "../assets/SaaSBayImg.png"; // Importing SaaSBay project image
 import QuizImg from "../assets/QuizGameImg.png"; // Importing Quiz Game project image
@@ -12,11 +12,11 @@ import DSImg from "../assets/DSImg.png"; // Importing Data Science project image
 const projects = [
   {
     title: "Portfolio Website",
-    description: "A modern, responsive portfolio built with React, Tailwind CSS, and custom animations.",
-    tech: ["React", "Tailwind CSS", "Framer Motion"],
-    link: "https://yourportfolio.com",
-    github: "https://github.com/yourusername/portfolio",
-    image: aboutImg,
+    description: "A modern, responsive portfolio built with React, Tailwind CSS.",
+    tech: ["React", "Tailwind CSS"],
+    link: "https://shaikmohammed-maaz.github.io/Portfolio/",
+    github: "https://github.com/shaikmohammed-maaz/Portfolio",
+    image: PortfolioImg,
     status: "Completed",
   },
   {
