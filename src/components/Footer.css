@@ -1,0 +1,53 @@
+.Footer{
+    background-color: var(--color-primary);
+    color: var(--color-text-secondary);
+    margin: 0px !important;
+}
+
+/* Mobile (up to 767px) */
+@media only screen and (max-width: 767px) {
+  .Footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .Footer > div,
+  .Footer a {
+    font-size: 0.98rem;
+  }
+
+  .Footer .italic {
+    margin-top: 0.5rem;
+  }
+
+  .Footer .flex {
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .Footer {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 2rem 2.5rem;
+  }
+
+  .Footer > div,
+  .Footer a {
+    font-size: 1.05rem;
+  }
+
+  .Footer .flex {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+  }
+}

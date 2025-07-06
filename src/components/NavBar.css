@@ -1,0 +1,105 @@
+.custom_nav{
+    background-color: var(--color-primary);
+    color: var(--color-primary-light);
+
+}
+.custom_nav ul{
+    color: var(--color-primary-light);
+}
+
+/* Hamburger Icon */
+.hamburger {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 50;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 2rem;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+  
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Mobile Menu Animation */
+.mobile-menu {
+  list-style: none;
+  padding: 1.5rem 0;
+  margin: 0;
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.10);
+  border-radius: 0 0 1rem 1rem;
+  overflow: hidden;
+}
+.mobile-menu li {
+  margin: 1rem 0;
+  text-align: center;
+}
+.mobile-menu li a {
+  color: #222;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.mobile-menu li a:hover {
+  color: #e0e0e0;
+}
+
+/* Slide-down animation */
+.menu-closed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.menu-open {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: auto;
+  transition: max-height 0.4s cubic-bezier(.4,2,.6,1), opacity 0.3s;
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger {
+    display: none; /* Hide hamburger icon on larger screens */
+  }
+  .mobile-menu {
+    display: flex; /* Show menu as a horizontal list */
+    flex-direction: row;
+    justify-content: center;
+    max-height: none; /* Remove max-height restriction */
+  }
+  .mobile-menu li {
+    margin: 0 1rem; /* Add horizontal spacing */
+  }
+  .mobile-menu li a {
+    font-size: 1rem; /* Adjust font size for larger screens */
+  } 
+  
+/* Blur overlay for mobile menu */
+.nav-blur-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 54;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.3);
+  pointer-events: auto;
+}
+}
+

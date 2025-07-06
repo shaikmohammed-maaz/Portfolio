@@ -1,0 +1,52 @@
+.home-content{
+    color: var(--color-text-main)
+
+}
+
+.home-content h1{
+    padding-top: 10%;
+}
+.home-content button{
+    background-color: var(--color-primary);
+    color: var(--color-primary-light);
+}
+
+/* Base styles: Mobile first (up to 600px) */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  /* Example: Switch to side-by-side layout for hero section */
+  .home {
+    flex-direction: row;
+    gap: 2.5rem; /* 40px */
+    padding: 3rem 4rem;
+  }
+  .home-content {
+    text-align: left;
+    align-items: flex-start;
+    max-width: 32rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 1024px and up) */
+@media only screen and (min-width: 1024px) {
+  .home {
+    padding: 4rem 8rem;
+    gap: 4rem; /* 64px */
+  }
+  .home-content {
+    max-width: 36rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .home {
+    padding: 6rem 12rem;
+    gap: 6rem; /* 96px */
+  }
+}
