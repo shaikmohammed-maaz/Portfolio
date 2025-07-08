@@ -2,7 +2,7 @@ import React from 'react';
 import { useState , useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import './Home.css'; // Importing the CSS file for Home styles
-import mainImg from '../assets/MyPic_3.jpg'; // Importing the main image
+import mainImg from '../assets/MyPic_1.jpg'; // Importing the main image
 
 function Home() {
     const [headingDone, setHeadingDone] = useState(false);
