@@ -7,6 +7,7 @@ import QuizImg from "../assets/QuizGameImg.png"; // Importing Quiz Game project 
 import HangmanImg from "../assets/HangmanImg.png"; // Importing Hangman Game project image
 import NearByImg from "../assets/NearByNowImg.png"; // Importing NearBy Now project image
 import DSImg from "../assets/DSImg.png"; // Importing Data Science project image
+import PSPImg from "../assets/PSPImg.png"; // Importing PSP VoiceOver App project image
 
 // Example Project Data
 const projects = [
@@ -72,6 +73,15 @@ const projects = [
     github: "https://github.com/shaikmohammed-maaz/C--Files",
     image: DSImg, // Replace with actual image URL
     status: "In Progress",
+  },
+  {
+    title:"PSP VoiceOver App",
+    description: "A app which helps old people to use their phone with ease to record voice message and send it to their loved ones.",
+    tech: ["SwiftUI", "Firebase"],
+    link: "https://drive.google.com/file/d/1iC0vBaQKMaOoS3Gz4lUBYXWB1WLg6FFT/view?usp=sharing",
+    github: "https://drive.google.com/drive/folders/1PO_3x4Uv6Y2fOJ3Nb3k5DpygawL1iBP7?usp=sharing",
+    image: PSPImg, // Replace
+    status: "Completed",
   }
 ];
 
