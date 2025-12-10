@@ -15,11 +15,36 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setFormSubmitted(false), 3000);
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('access_key', 'fc4282da-b3ef-4b90-9200-70b81882ab4a');
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('message', formData.message);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setFormSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        console.log('Form submitted successfully:', result);
+        setTimeout(() => setFormSubmitted(false), 3000);
+      } else {
+        console.error('Form submission failed:', result.message);
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Network error. Please try again.');
+    }
   };
 
   return (
