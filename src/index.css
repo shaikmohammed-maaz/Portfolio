@@ -1,36 +1,51 @@
-@import "tailwindcss";
+@import '@fontsource/space-mono/700.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --color-primary: #21282c;         /* silver */
-  --color-primary-light: #E5E4E2;   /* platinum */
-  --color-secondary: #A9A9A9;       /* pincle-gray */
-  --color-accent: #7B9095;          /* steel */
-  --color-background: #F5F7FA;      /* pale-gray */
-  --color-text-main: #2a3439;       /* gunmetal */
-  --color-text-secondary: #727472;  /* nickel */
-
-
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--color-background);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-title: 'Space Mono', monospace;
+  --font-body: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  font-weight: 400;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+.title-font {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  body {
+    cursor: auto;
+  }
+}
+
+a, button {
+  cursor: none;
+}
+
+@media (max-width: 1024px) {
+  a, button {
+    cursor: pointer;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: inherit;
 }
 

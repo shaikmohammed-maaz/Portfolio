@@ -1,54 +1,46 @@
-import React, { useState } from "react";
-import "./NavBar.css";
-import logo from "../assets/MyLogo.png"; // Import your logo image here
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-scroll';
+import { motion } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 
-function NavBar() {
-  const [open, setOpen] = useState(false);
+const NavBar = () => {
+  const { isDark } = useTheme();
+  const [activeSection, setActiveSection] = useState('home');
+  const navItems = [
+    { to: "home", label: "Home" },
+    { to: "aboutme", label: "About Me" },
+    { to: "skills", label: "Skills" },
+    { to: "projects", label: "Projects" },
+    { to: "timeline", label: "Experience" },
+    { to: "contact", label: "Contact" }
+  ];
 
   return (
-    
-    <nav className="custom_nav fixed top-0 left-0 w-full px-6 py-4 flex items-center justify-between z-50 bg-primary">
-
-  {/* <img src={logo} alt="Logo" className="w-full h-full object-contain" /> */}
-
-    {open && (
-        <div className="nav-blur-overlay fixed inset-0 z-30 backdrop-blur-md bg-black/30"></div>
-      )}
-      
-      {/* Hamburger Button */}
-      <button
-        className={`hamburger ${open ? "open" : ""} md:hidden`}
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
-      >
-        <span />
-        <span />
-        <span />
-      </button>
-      
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-6">
-        <li><a href="#home" className="hover:text-gray-400">Home</a></li>
-        <li><a href="#aboutme" className="hover:text-gray-400">About me</a></li>
-        <li><a href="#skills" className="hover:text-gray-400">Skills</a></li>
-        <li><a href="#projects" className="hover:text-gray-400">Projects</a></li>
-        <li><a href="#contact" className="hover:text-gray-400">Contact</a></li>
-      </ul>
-
-      {/* Mobile Menu */}
-      <ul
-        className={`mobile-menu md:hidden fixed top-16 left-0 w-full bg-primary transition-all duration-300 z-40 ${
-          open ? "menu-open" : "menu-closed"
-        }`}
-      >
-        <li><a href="#home" onClick={() => setOpen(false)}>Home</a></li>
-        <li><a href="#aboutme" onClick={() => setOpen(false)}>About me</a></li>
-        <li><a href="#skills" onClick={() => setOpen(false)}>Skills</a></li>
-        <li><a href="#projects" onClick={() => setOpen(false)}>Projects</a></li>
-        <li><a href="#contact" onClick={() => setOpen(false)}>Contact</a></li>
-      </ul>
-    </nav>
+    <ul className="space-y-1 relative">
+      {navItems.map((item, i) => (
+        <motion.li key={item.to} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.05 }}>
+          <Link
+            to={item.to}
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={0}
+            onSetActive={() => setActiveSection(item.to)}
+            className={`block px-4 py-3 rounded-lg transition-all cursor-pointer relative overflow-hidden group ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
+            activeClass={isDark ? 'text-white bg-gradient-to-r from-blue-500/20 to-pink-500/20 border-l-2 border-blue-500' : 'text-gray-900 bg-gradient-to-r from-blue-100 to-pink-100 border-l-2 border-blue-500'}
+          >
+            <motion.span className="relative z-10" whileHover={{ x: 4 }}>{item.label}</motion.span>
+            <motion.div
+              className={`absolute inset-0 -z-10 ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}
+              initial={{ x: '-100%' }}
+              whileHover={{ x: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </Link>
+        </motion.li>
+      ))}
+    </ul>
   );
-}
+};
 
 export default NavBar;

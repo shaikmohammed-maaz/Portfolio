@@ -1,8 +1,21 @@
-# React + Vite
+# 🎨 Luxurious Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, animated portfolio built with React, Framer Motion, and Tailwind CSS. Features dark/light themes, advanced animations, and unique interactive components.
 
-Currently, two official plugins are available:
+## ✨ Key Features
+- 🌙 Dark/Light theme with smooth transitions
+- 🎬 Advanced animations with Framer Motion
+- 📱 Fully responsive design
+- 🎮 RPG-style skills section
+- 🖥️ Terminal-inspired contact form
+- 🎯 Horizontal scrolling projects deck
+- ✨ Custom cursor and easter eggs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Quick Start
+```bash
+npm install
+npm run dev
+```
+
+## 📚 Documentation
+See `MASTER_DOCUMENTATION.md` for complete project documentation.
