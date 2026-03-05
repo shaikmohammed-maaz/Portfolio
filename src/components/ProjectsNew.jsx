@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { useTheme } from '../contexts/ThemeContext';
 import ProjectCard from './ProjectCard';
 import PortfolioImg from "../assets/PortfoiloImg.png";
@@ -13,11 +13,6 @@ import PSPImg from "../assets/PSPImg.png";
 
 export default function ProjectsSection() {
   const { isDark } = useTheme();
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   const projects = [
     {
@@ -94,26 +89,29 @@ export default function ProjectsSection() {
     }
   ];
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0px", "-5000px"]);
+  const completedProjects = projects.filter(p => p.status === 'Completed');
 
   return (
-    <div ref={containerRef} className="relative" style={{ height: `1000vh` }}>
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        <h2 className={`title-font text-4xl md:text-6xl mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
+    <div className="relative py-24 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className={`title-font text-4xl md:text-6xl mb-16 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
           PROJECTS & WORK
         </h2>
-        <motion.div 
-          className="flex gap-8 pl-80"
-          style={{ x }}
-        >
-          {projects.map((project, i) => (
-            <ProjectCard 
-              key={i} 
-              project={project} 
-              isFocused={false}
-            />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12 pb-24">
+          {completedProjects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="flex h-full"
+            >
+              <ProjectCard project={project} isFocused={false} />
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

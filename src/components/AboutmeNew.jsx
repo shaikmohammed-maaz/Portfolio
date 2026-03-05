@@ -46,21 +46,19 @@ export default function Aboutme() {
       transition={{ duration: 0.8 }}
     >
       <h2
-        className={`title-font text-4xl md:text-6xl mb-16 text-center ${
-          isDark ? 'text-white' : 'text-gray-900'
-        }`}
+        className={`title-font text-3xl md:text-5xl lg:text-6xl mb-12 lg:mb-16 text-center ${isDark ? 'text-white' : 'text-gray-900'
+          }`}
       >
         ABOUT ME
       </h2>
 
       {/* Timeline Cards */}
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
         {timeline.map((item, i) => (
           <motion.div
             key={i}
-            className={`relative p-8 rounded-2xl backdrop-blur-md transition-all ${
-              isDark ? 'bg-gray-900/70 border border-gray-800' : 'bg-white/70 border border-gray-200'
-            }`}
+            className={`relative p-8 rounded-2xl backdrop-blur-md transition-all ${isDark ? 'bg-gray-900/70 border border-gray-800' : 'bg-white/70 border border-gray-200'
+              }`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -74,16 +72,14 @@ export default function Aboutme() {
           >
             <div className="text-6xl mb-4">{item.icon}</div>
             <div
-              className={`title-font text-xs mb-2 ${
-                isDark ? 'text-blue-400' : 'text-blue-600'
-              }`}
+              className={`title-font text-xs mb-2 ${isDark ? 'text-blue-400' : 'text-blue-600'
+                }`}
             >
               {item.phase}
             </div>
             <h3
-              className={`text-2xl font-bold mb-4 ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}
+              className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'
+                }`}
             >
               {item.title}
             </h3>
@@ -96,11 +92,10 @@ export default function Aboutme() {
 
       {/* Quote Highlight */}
       <motion.div
-        className={`relative p-12 rounded-2xl backdrop-blur-lg text-center mb-16 ${
-          isDark
+        className={`relative p-12 rounded-2xl backdrop-blur-lg text-center mb-16 ${isDark
             ? 'bg-gradient-to-br from-blue-900/30 to-purple-900/30 border border-blue-500/30'
             : 'bg-gradient-to-br from-blue-50/80 to-purple-50/80 border border-blue-200'
-        }`}
+          }`}
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -114,9 +109,8 @@ export default function Aboutme() {
 
       {/* Interactive Keywords */}
       <div
-        className={`p-8 rounded-2xl backdrop-blur-md ${
-          isDark ? 'bg-gray-900/70 border border-gray-800' : 'bg-white/70 border border-gray-200'
-        }`}
+        className={`p-8 rounded-2xl backdrop-blur-md ${isDark ? 'bg-gray-900/70 border border-gray-800' : 'bg-white/70 border border-gray-200'
+          }`}
       >
         <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
           With a background in both frontend and backend development, I build seamless digital
@@ -129,14 +123,14 @@ export default function Aboutme() {
             data science
             {hoveredKeyword === 'data science' && (
               <motion.div
-                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50"
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 w-[80vw] max-w-[200px] sm:max-w-xs md:max-w-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <img
                   src={keywords['data science']}
                   alt="Data Science"
-                  className="w-48 h-32 object-cover rounded-lg shadow-2xl"
+                  className="w-full h-auto object-cover rounded-lg shadow-2xl border-2 border-blue-500/30"
                 />
               </motion.div>
             )}
@@ -150,14 +144,14 @@ export default function Aboutme() {
             statistics
             {hoveredKeyword === 'statistics' && (
               <motion.div
-                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50"
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 w-[80vw] max-w-[200px] sm:max-w-xs md:max-w-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <img
                   src={keywords.statistics}
                   alt="Statistics"
-                  className="w-48 h-32 object-cover rounded-lg shadow-2xl"
+                  className="w-full h-auto object-cover rounded-lg shadow-2xl border-2 border-purple-500/30"
                 />
               </motion.div>
             )}
@@ -172,14 +166,14 @@ export default function Aboutme() {
             hackathons
             {hoveredKeyword === 'hackathons' && (
               <motion.div
-                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50"
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 w-[80vw] max-w-[200px] sm:max-w-xs md:max-w-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <img
                   src={keywords.hackathons}
                   alt="Hackathons"
-                  className="w-48 h-32 object-cover rounded-lg shadow-2xl"
+                  className="w-full h-auto object-cover rounded-lg shadow-2xl border-2 border-pink-500/30"
                 />
               </motion.div>
             )}

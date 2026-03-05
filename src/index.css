@@ -13,7 +13,6 @@ body {
   font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
-  cursor: none;
   overflow-x: hidden;
 }
 
@@ -22,22 +21,6 @@ body {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-
-@media (max-width: 1024px) {
-  body {
-    cursor: auto;
-  }
-}
-
-a, button {
-  cursor: none;
-}
-
-@media (max-width: 1024px) {
-  a, button {
-    cursor: pointer;
-  }
 }
 
 * {

@@ -3,6 +3,7 @@ import { FaLinkedin, FaGithub, FaCode, FaBars, FaTimes, FaSun, FaMoon } from 're
 import { motion, AnimatePresence } from 'framer-motion';
 import NavBar from './NavBar';
 import { useTheme } from '../contexts/ThemeContext';
+import cvFile from "../assets/Shaik_Mohammed_Maaz.pdf";
 
 const LeftSidebar = () => {
   const { isDark, toggleTheme } = useTheme();
@@ -38,6 +39,12 @@ const LeftSidebar = () => {
     setIsOpen((s) => !s);
   };
 
+  const closeSidebarMobile = () => {
+    if (window.innerWidth < 1024) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <>
       {/* Mobile Toggle Button */}
@@ -68,9 +75,8 @@ const LeftSidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-72 shadow-2xl transform transition-all duration-300 ease-in-out z-50 backdrop-blur-xl ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 ${isDark ? 'bg-gray-900/95 text-white' : 'bg-white/95 text-gray-800'}`}
+        className={`fixed top-0 left-0 h-full w-72 shadow-2xl transform transition-all duration-300 ease-in-out z-50 backdrop-blur-xl ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          } lg:translate-x-0 ${isDark ? 'bg-gray-900/95 text-white' : 'bg-white/95 text-gray-800'}`}
       >
         <div className="h-full flex flex-col p-6">
           <div className="space-y-6">
@@ -110,24 +116,25 @@ const LeftSidebar = () => {
                 <FaCode className="text-2xl" />
               </motion.a>
             </motion.div>
-          </div>
 
+          </div>
           <nav className="mt-8 flex-1">
-            <NavBar />
+            <NavBar onNavClick={closeSidebarMobile} />
           </nav>
 
-          <motion.button
-            onClick={toggleTheme}
-            className={`w-full mb-4 p-3 rounded-lg flex items-center justify-center gap-2 transition-all ${isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'}`}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-blue-500" />}
-            <span className="text-sm font-medium">{isDark ? 'Light Mode' : 'Dark Mode'}</span>
-          </motion.button>
-
-          <div className={`mt-auto pt-6 text-center text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            <p>© 2025 Shaik Mohammed Maaz</p>
+          <div className="mt-auto pt-6 text-center">
+            <motion.a
+              href={cvFile}
+              download="Shaik_Mohammed_Maaz_Resume.pdf"
+              className={`flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold tracking-widest text-xs transition-all border-2 ${isDark
+                ? 'border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 shadow-[0_0_15px_rgba(34,211,238,0.3)]'
+                : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-lg'
+                }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              RÉSUMÉ
+            </motion.a>
           </div>
         </div>
       </aside>

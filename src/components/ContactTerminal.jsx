@@ -2,6 +2,7 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaCode } from "react-icons/fa";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from '../contexts/ThemeContext';
+import cvFile from "../assets/Shaik_Mohammed_Maaz.pdf";
 
 export default function ContactSection() {
   const { isDark } = useTheme();
@@ -17,21 +18,21 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formDataToSend = new FormData();
     formDataToSend.append('access_key', 'fc4282da-b3ef-4b90-9200-70b81882ab4a');
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('message', formData.message);
-    
+
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formDataToSend
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
         setFormSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
@@ -80,7 +81,7 @@ export default function ContactSection() {
       <motion.div
         className={`relative z-10 p-8 rounded-lg border transition-all duration-300 ${isDark ? 'bg-gray-900/80 border-white/20' : 'bg-white/80 border-gray-300/20'}`}
         style={{
-          boxShadow: isDark 
+          boxShadow: isDark
             ? '0 0 15px rgba(0, 255, 255, 0.15), inset 0 0 10px rgba(0, 255, 255, 0.05)'
             : '0 0 15px rgba(0, 102, 204, 0.15), inset 0 0 10px rgba(0, 102, 204, 0.05)'
         }}
@@ -115,7 +116,7 @@ export default function ContactSection() {
                 type="text"
                 placeholder="IDENTITY_NAME"
                 value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
                 className={`w-full px-4 py-3 rounded font-mono transition-all ${isDark ? 'bg-gray-800 text-white border border-gray-700 focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'bg-white text-gray-900 border border-gray-300 focus:border-blue-500 focus:shadow-[0_0_10px_rgba(0,102,204,0.3)]'} outline-none`}
               />
@@ -123,14 +124,14 @@ export default function ContactSection() {
                 type="email"
                 placeholder="CONTACT_PROTOCOL"
                 value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
                 className={`w-full px-4 py-3 rounded font-mono transition-all ${isDark ? 'bg-gray-800 text-white border border-gray-700 focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'bg-white text-gray-900 border border-gray-300 focus:border-blue-500 focus:shadow-[0_0_10px_rgba(0,102,204,0.3)]'} outline-none`}
               />
               <textarea
                 placeholder="MESSAGE_PAYLOAD"
                 value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
                 rows={4}
                 className={`w-full px-4 py-3 rounded font-mono transition-all ${isDark ? 'bg-gray-800 text-white border border-gray-700 focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'bg-white text-gray-900 border border-gray-300 focus:border-blue-500 focus:shadow-[0_0_10px_rgba(0,102,204,0.3)]'} outline-none resize-none`}
@@ -138,13 +139,13 @@ export default function ContactSection() {
               <motion.button
                 type="submit"
                 className={`w-full px-8 py-4 rounded font-bold transition-all ${isDark ? 'bg-cyan-500 hover:bg-cyan-400' : 'bg-blue-600 hover:bg-blue-500'}`}
-                style={{ 
+                style={{
                   color: '#ffffff',
                   boxShadow: isDark
                     ? '0 0 10px rgba(0, 255, 255, 0.2)'
                     : '0 0 10px rgba(0, 102, 204, 0.2)'
                 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   boxShadow: isDark
                     ? '0 0 15px rgba(0, 255, 255, 0.3)'
@@ -181,7 +182,7 @@ export default function ContactSection() {
             [ <FaEnvelope className="inline mx-1" /> {copied ? 'COPIED!' : 'shaikmaaz333@gmail.com'} ]
           </motion.button>
 
-          <div className="flex justify-center gap-8">
+          <div className="flex justify-center gap-8 mb-12">
             <motion.a
               href="https://www.linkedin.com/in/shaik-mohammed-maaz-938496272/"
               target="_blank"
@@ -210,8 +211,52 @@ export default function ContactSection() {
               [ <FaCode className="inline mx-1" /> LEETCODE ]
             </motion.a>
           </div>
+
+          {/* Resume Download */}
+          <div className="flex flex-col items-center border-t border-gray-600 border-dashed pt-8">
+            <h3 className={`font-mono text-sm mb-6 ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>
+              {">>"} SYSTEM_RESOURCE_AVAILABLE
+            </h3>
+            <motion.a
+              href={cvFile}
+              download="Shaik_Mohammed_Maaz_Resume.pdf"
+              className={`px-8 py-4 rounded font-bold tracking-widest transition-all ${isDark ? 'bg-transparent text-cyan-400 border border-cyan-400' : 'bg-transparent text-blue-600 border border-blue-600'}`}
+              style={{
+                boxShadow: isDark
+                  ? '0 0 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1)'
+                  : '0 0 15px rgba(0, 102, 204, 0.2), inset 0 0 10px rgba(0, 102, 204, 0.1)'
+              }}
+              whileHover={{
+                scale: 1.05,
+                backgroundColor: isDark ? 'rgba(0, 255, 255, 0.1)' : 'rgba(0, 102, 204, 0.1)',
+                boxShadow: isDark
+                  ? '0 0 25px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.2)'
+                  : '0 0 25px rgba(0, 102, 204, 0.4), inset 0 0 15px rgba(0, 102, 204, 0.2)'
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              DOWNLOAD RÉSUMÉ
+            </motion.a>
+          </div>
+
         </div>
       </motion.div>
+
+      {/* Thank You Message */}
+      <motion.div
+        className="mt-24 text-center pb-8"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        <p className={`font-mono text-lg md:text-xl tracking-[0.2em] ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <span className={isDark ? "text-cyan-400" : "text-blue-600"}>{"<"}</span>
+          THANK YOU FOR SCROLLING
+          <span className={isDark ? "text-cyan-400" : "text-blue-600"}>{" />"}</span>
+        </p>
+      </motion.div>
+
     </motion.section>
   );
 }

@@ -43,92 +43,97 @@ export default function SkillsSection() {
       className={`py-16 px-6 md:px-24 rounded-2xl shadow-xl max-w-6xl mx-auto my-12 pt-24 backdrop-blur-md transition-colors duration-300 ${isDark ? 'bg-gray-900/70 border border-gray-800' : 'bg-white/70 border border-gray-200'}`}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
-      <h2 className={`title-font text-4xl md:text-6xl mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <h2 className={`title-font text-3xl md:text-5xl lg:text-6xl mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
         SKILLS & TECHNOLOGIES
       </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {Object.entries(skillCategories).map(([category, skills]) => (
           <motion.div
             key={category}
-            className={`p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-100/50'} backdrop-blur-sm`}
+            className={`p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-100/50'} backdrop-blur-sm relative z-10`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className={`title-font text-lg mb-6 text-center ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+            <h3 className={`title-font text-lg mb-6 text-center tracking-widest ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
               {category.toUpperCase()}
             </h3>
-            
-            <div className="space-y-4">
+
+            <div className="space-y-6">
               {skills.map((skill) => (
-                <motion.div
+                <div
                   key={skill.name}
-                  className="relative cursor-pointer"
+                  className="relative group cursor-pointer"
                   onMouseEnter={() => setHoveredSkill(skill)}
                   onMouseLeave={() => setHoveredSkill(null)}
-                  whileHover={{ scale: 1.02 }}
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <skill.icon className={`text-2xl ${skill.color}`} />
+                  <motion.div
+                    className="flex items-center gap-4 mb-2"
+                    whileHover={{ x: 4 }}
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                      <skill.icon className={`text-2xl md:text-3xl ${skill.color}`} />
+                    </div>
                     <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       {skill.name}
                     </span>
-                    <span className={`ml-auto text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <span className={`ml-auto text-sm font-mono ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                       {skill.xp}%
                     </span>
-                  </div>
-                  
+                  </motion.div>
+
                   {/* XP Bar */}
-                  <div className={`w-full h-2 rounded-full ${isDark ? 'bg-gray-700' : 'bg-gray-300'} overflow-hidden`}>
+                  <div className={`w-full h-2 md:h-2.5 rounded-full ${isDark ? 'bg-gray-700' : 'bg-gray-300'} overflow-hidden`}>
                     <motion.div
                       className={`h-full ${getXPColor(skill.xp)} rounded-full`}
                       initial={{ width: 0 }}
-                      animate={{ width: hoveredSkill === skill ? `${skill.xp}%` : `${skill.xp}%` }}
-                      whileInView={{ width: `${skill.xp}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: hoveredSkill === skill ? 0.8 : 1, delay: hoveredSkill === skill ? 0 : 0.2 }}
-                      key={hoveredSkill === skill ? 'hovered' : 'normal'}
+                      animate={{ width: `${skill.xp}%` }}
+                      transition={{ duration: 1, ease: 'easeOut' }}
                     />
                   </div>
 
                   {/* Pixel Art Tooltip */}
                   {hoveredSkill === skill && (
                     <motion.div
-                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-50 p-3 rounded-lg border-2 ${isDark ? 'bg-gray-900 border-blue-500 text-white' : 'bg-white border-blue-600 text-gray-900'} shadow-2xl`}
-                      style={{ 
+                      className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-4 z-50 p-4 rounded-lg border-2 ${isDark ? 'bg-gray-900 border-blue-500 text-white' : 'bg-white border-blue-600 text-gray-900'} shadow-2xl pointer-events-none`}
+                      style={{
                         fontFamily: 'monospace',
-                        fontSize: '12px',
-                        minWidth: '200px'
+                        fontSize: '13px',
+                        minWidth: '220px',
+                        width: 'max-content'
                       }}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="text-center">
-                        <div className={`font-bold mb-1 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                      <div className="text-center space-y-1">
+                        <div className={`font-bold mb-2 text-sm tracking-widest ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
                           [{skill.name.toUpperCase()}]
                         </div>
-                        <div className="text-xs mb-1">
-                          Class: {skill.class}
+                        <div className="flex justify-between border-b border-gray-700/50 pb-1">
+                          <span className="opacity-70">Class:</span>
+                          <span>{skill.class}</span>
                         </div>
-                        <div className="text-xs mb-1">
-                          Ability: {skill.ability}
+                        <div className="flex justify-between border-b border-gray-700/50 pb-1 pt-1">
+                          <span className="opacity-70">Ability:</span>
+                          <span>{skill.ability}</span>
                         </div>
-                        <div className="text-xs">
-                          XP: {skill.xp}/100
+                        <div className="flex justify-between pt-1 font-bold">
+                          <span className="opacity-70">XP:</span>
+                          <span className={getXPColor(skill.xp).replace('bg-', 'text-')}>{skill.xp}/100</span>
                         </div>
                       </div>
                       {/* Tooltip Arrow */}
-                      <div 
-                        className={`absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent ${isDark ? 'border-t-blue-500' : 'border-t-blue-600'}`}
+                      <div
+                        className={`absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent ${isDark ? 'border-t-blue-500' : 'border-t-blue-600'}`}
                       />
                     </motion.div>
                   )}
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>

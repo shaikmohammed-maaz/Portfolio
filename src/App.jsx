@@ -10,7 +10,6 @@ import ContactSection from './components/ContactTerminal.jsx';
 import Footer from './components/Footer.jsx';
 import LeftSidebar from './components/LeftSidebar.jsx';
 import AnimatedBackground from './components/AnimatedBackground.jsx';
-import CustomCursor from './components/CustomCursor.jsx';
 import ShiftScrollEasterEgg from './components/ShiftScrollEasterEgg.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
 
@@ -20,7 +19,6 @@ function App() {
       <div className="relative min-h-screen transition-colors duration-500">
         <ScrollProgress />
         <AnimatedBackground />
-        <CustomCursor />
         <ShiftScrollEasterEgg />
         <LeftSidebar />
         <main className="w-full lg:pl-72">

@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
-const NavBar = () => {
+const NavBar = ({ onNavClick }) => {
   const { isDark } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
   const navItems = [
@@ -25,6 +25,7 @@ const NavBar = () => {
             duration={500}
             spy={true}
             offset={0}
+            onClick={onNavClick}
             onSetActive={() => setActiveSection(item.to)}
             className={`block px-4 py-3 rounded-lg transition-all cursor-pointer relative overflow-hidden group ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
             activeClass={isDark ? 'text-white bg-gradient-to-r from-blue-500/20 to-pink-500/20 border-l-2 border-blue-500' : 'text-gray-900 bg-gradient-to-r from-blue-100 to-pink-100 border-l-2 border-blue-500'}
